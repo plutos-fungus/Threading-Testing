@@ -16,7 +16,12 @@ namespace MathWithThreading
         public List<int> thr2 = new List<int>();
         public List<int> thr3 = new List<int>();
         public List<int> thr4 = new List<int>();
-        public List<int> Final = new List<int>();
+        public List<int> Final1 = new List<int>();
+        public List<int> Final2 = new List<int>();
+        public List<int> Final3 = new List<int>();
+        public List<int> Final4 = new List<int>();
+        public List<int> FinalFinal = new List<int>();
+
         public void Loader(int amount)
         {
             //using (StreamReader sr = new StreamReader("hej.csv"))
@@ -90,7 +95,8 @@ namespace MathWithThreading
             tr4.Join();
 
             stopwatch.Stop();
-            Console.WriteLine(stopwatch.ElapsedMilliseconds + " " + "4 threads");
+            Console.WriteLine(stopwatch.ElapsedMilliseconds + " " + "4 threads in milliseconds");
+            Final();
             stopwatch.Reset();
         }
 
@@ -98,8 +104,7 @@ namespace MathWithThreading
         {
             for (int i = 0; i < thr1.Count(); i++)
             {
-                //Final.Add(thr1[i] * thr2[i] + i);
-                Final.Add(thr1[i].GetHashCode());
+                Final1.Add(thr1[i].GetHashCode());
             }
         }
 
@@ -107,8 +112,7 @@ namespace MathWithThreading
         {
             for (int i = 0; i < thr2.Count(); i++)
             {
-                //Final.Add(thr1[i] * thr2[i] + i);
-                Final.Add(thr2[i].GetHashCode());
+                Final2.Add(thr2[i].GetHashCode());
             }
         }
 
@@ -116,7 +120,7 @@ namespace MathWithThreading
         {
             for (int i = 0; i < thr3.Count(); i++)
             {
-                Final.Add(thr3[i].GetHashCode());
+                Final3.Add(thr3[i].GetHashCode());
             }
         }
 
@@ -124,7 +128,26 @@ namespace MathWithThreading
         {
             for (int i = 0; i < thr4.Count(); i++)
             {
-                Final.Add(thr4[i].GetHashCode());
+                Final4.Add(thr4[i].GetHashCode());
+            }
+        }
+        public void Final()
+        {
+            for (int i = 0; i < Final1.Count; i++)
+            {
+                FinalFinal.Add(Final1[i]);
+            }
+            for (int i = 0; i < Final2.Count; i++)
+            {
+                FinalFinal.Add(Final2[i]);
+            }
+            for (int i = 0; i < Final3.Count; i++)
+            {
+                FinalFinal.Add(Final3[i]);
+            }
+            for (int i = 0; i < Final4.Count; i++)
+            {
+                FinalFinal.Add(Final4[i]);
             }
         }
     }
